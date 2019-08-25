@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+        var list = $("#inner");
+        //원본 이미지 개수를 구해야함.
+        var imgOrgCnt = $("#inner > div").length;
+        console.log("원본 이미지 개수 :"+imgOrgCnt);
+        var copyObj = $("#frame > div:lt(3)").clone();
+        list.append(copyObj);
+        var clickCnt = 0;
+        $("#right").click(function(){
+          console.log(imgOrgCnt);
+
+            if(clickCnt == imgOrgCnt){
+              clickCnt = 0;
+              $("#inner").css("margin-left","0px");
+
+            }
+            clickCnt++;
+            var mLeft = -(300*clickCnt);
+            // $("#banner").css("margin-left" , marginLeft+"px");
+            console.log(mLeft);
+
+            $("#inner").animate({marginLeft : mLeft + "px"},1000)
+        });
+        $("#left").click(function(){
+            if(clickCnt == 0){
+              clickCnt = imgOrgCnt;
+              $("#inner").css("margin-left",-(300*clickCnt)+"px");
+
+            }
+            clickCnt--;
+            var mLeft = -(300*clickCnt);
+            $("#inner").animate({marginLeft : mLeft + "px"},1000)
+        });
+
+      });
+
+    </script>
+  </head>
+  <style media="screen">
+    .box{float:left; width:240; height:100; overflow:hidden;vertical-align : middle;}
+    #frame{width: 900px; height: 300px; overflow: hidden; margin : auto; margin-top : 300px;}
+    img {width : 300px; vertical-align : middle;}
+    body{text-align : center;margin : auto;}
+    a{position : absolute ;vertical-align : middle; text-decoration : none; font-size : 20px; color : gray;}
+    #left{margin-left : -500px; margin-top : 150px;}
+    #right{margin-left : 500px; margin-top : -150px;}
+
+    #inner::after{content:""; clear: both; display: block;}
+
+
+  </style>
+  <body>
+
+    <div id="frame_outter">
+      <a href="#" id = "left"><</a>
+
+    <div id="frame">
+    <div id="inner">
+
+
+    <div class="box">
+      <img src="img/01.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/02.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/03.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/04.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/05.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/06.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/07.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/08.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/09.jpg" alt="">
+    </div>
+    <div class="box">
+      <img src="img/011.jpg" alt="">
+    </div>
+</div>
+  </div>
+  <a href="#" id = "right">></a>
+
+</div>
+
+  </body>
+</html>
